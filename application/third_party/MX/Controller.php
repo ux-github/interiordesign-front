@@ -40,6 +40,8 @@ require_once __DIR__.'/Base.php';
 class MX_Controller {
 
 	public $autoload = array();
+	public $profile = array();
+	public $popular_posts = array();
 
 	public function __construct() 
 	{
@@ -57,7 +59,10 @@ class MX_Controller {
 		$this->load->_autoloader($this->autoload);
 
 		$menu_items = json_decode($this->curl->simple_get($this->config->item('rest_api_inoy') . '/menu'), true);
-		//var_dump($menu_items);die;
+		$company_profile = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages?slug=profile'),true);
+		$popular_posts = json_decode($this->curl->simple_get($this->config->item('rest_api_inoy') . '/posts-popular'), true);
+		$this->popular_posts = $popular_posts;
+		$this->profile = $company_profile[0];
 		$this->load->library("multi_menu");
 		$this->multi_menu->set_items($menu_items);
 	}

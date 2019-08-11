@@ -1,141 +1,146 @@
-<!-- Slider Area -->
-<section id="slider" class="slider" style="background-image:url('<?php echo $top_article[0]['featured_image']['url'];?>')">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-7 col-sm-12 col-xs-12">
-				<div class="text">
-					<?php echo $top_article[0]['content']['rendered'];?>
-					<div class="button">
-						<a href="<?php echo site_url('service');?>" class="btn primary "><i class="fa fa-briefcase"></i>view work</a>
-						<a href="<?php echo site_url('contact-us');?>" class="btn"><i class="fa fa-phone"></i>Contact me</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!--/ End Slider Area -->
+<div class="site-blocks-cover overlay" style="background-image: url(<?php echo $banner['image'];?>);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center text-center justify-content-center">
+          <div class="col-md-8">
+            <span class="sub-text">Interior Design Company</span>
+            <h1>Experience Interior Design</h1>
+          </div>
+        </div>
+      </div>
+    </div>  
 
-<!-- Start about -->
-<section id="about" class="about">
-	<div class="container">
-		<div class="row">
-			<div class="about-content">
-				<div class="col-xs-12">
-					<div style="margin-top: 0;margin-bottom: 16px;text-align: left;" class="section-title">
-						<h2><?php echo $service_article[0]['title']['rendered'];?></h2>
-					</div>
-				</div>
-				<div class="col-md-8 col-sm-8 col-xs-12">
-					<div class="single-about">
-						<?php echo word_limiter($service_article[0]['content']['rendered'], 100);?>
-						<div class="cv">
-							<a href="<?php echo site_url('profile');?>">More detail</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-12">
-					<div class="image">
-						<img src="<?php echo $service_article[0]['featured_image']['url'];?>" alt="#">
-						<!-- <a href="<?php echo $service_article[0]['acf']['link_youtube'];?>" class="video video-popup mfp-iframe"><i class="fa fa-play"></i></a> -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!--/ End about -->
-		
-<!-- Testimonials -->
-<section id="testimonials" class="testimonials section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<div class="testi-content">
-					<h2>What People Says</h2>
-					<div class="owl-carousel testimonial-slider">
-						<!--Start single-testimonial -->
-						<?php
-						if ( count($people_says) > 0 ) { 
-							foreach( $people_says as $k => $v) {
-						?>
-						<div class="single-testimonial">
-							<img src="<?php echo $v['featured_image']['url'];?>" alt="#">
-							<p><i class="fa fa-quote-left"></i><i><?php echo strip_tags($v['content']['rendered']);?></i></p>
-							<div class="star">
-								<?php for ( $i=0;$i<$v['acf']['star_rate'];$i++ ) { ?>
-								<i class="fa fa-star"></i>
-								<?php } ?>
-							</div>
-							<span class="name"><?php echo $v['title']['rendered'];?></span>
-						</div>
-						<?php } } else { ?>
-						<!--End single-testimonial -->
-						<!--Start single-testimonial -->
-						<div class="single-testimonial">
-							<img src="img/author2.jpg" alt="#">
-							<p><i class="fa fa-quote-left"></i><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </i> </p>
-							<div class="star">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star-half"></i>
-								<i class="fa fa-star-half"></i>
-							</div>
-							<span class="name">Sabbir Ahmed</span>
-						</div>
-						<?php } ?>
-						<!--End single-testimonial -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!--/ End testimonial -->
-	
-<!-- Contact -->
-<section id="contact" class="contact section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4 col-sm-12 col-xs-12">
-				<div class="contact-info">
-					<h4>Contact info</h4>
-					<?php echo $contact[0]['content']['rendered'];?>
-					<span><i class="fa fa-phone-square"></i><?php echo $contact[0]['acf']['handphone'];?></span>
-					<span><i class="fa fa-map-marker"></i><?php echo $contact[0]['acf']['address'];?></span>
-					<span><i class="fa fa-envelope"></i><a href="#"><?php echo $contact[0]['acf']['email'];?></a></span>
-					<span><i class="fa fa-globe"></i><a href="#"><?php echo $contact[0]['acf']['website'];?></a></span>
-				</div>
-			</div>
-			<div class="col-md-8 col-sm-12 col-xs-12 ">
-				<div class="form">
-					<form id="form-inquiry" class="form" action="contact_us/submit_inquiry">
-						<div class="form-group">
-							<input type="hidden" name="<?=$csrf['name'];?>" id="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>"/>
-							<input name="name" id="name-inquiry" required="true" type="text" placeholder="enter name">
-						</div>
-						<div class="form-group">
-							<input name="email" id="email-inquiry" required="true" type="email" placeholder="enter email">
-						</div>
-						<div class="form-group">
-							<input name="phone" id="phone-inquiry" required="true" type="number" placeholder="enter phone number">
-						</div>
-						<div class="form-group">
-							<textarea name="message" id="message-inquiry" required="true" placeholder="enter message"></textarea>
-						</div>
-						<div class="form-group">
-							<div class="button">
-								<button type="submit" id="btn-submit-inquiry" required="true" data-loading-text="Loading..." class="btn primary">Submit</button>
-							</div>
-							<br>
-							<div id="alert-inquiry-success" style="display:none;" class="alert alert-success alert-inquiry" role="alert"></div>
-							<div id="alert-inquiry-failed" style="display:none;" class="alert alert-danger alert-inquiry" role="alert"></div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!--/ End Contact -->
+    <div class="site-block-1">
+      <div class="container">
+        <div class="row">
+          <?php 
+          if(count($top_block) > 0) {
+            foreach($top_block as $kTopBlock=>$vTopBlock) {
+          ?>
+          <div class="col-lg-4">
+            <a href="#" class="site-block-feature d-flex p-4 rounded mb-4">
+              <div class="mr-3">
+                <span class="icon flaticon-window font-weight-light h2"></span>
+              </div>
+              <div class="text">
+                <h3><?php echo $vTopBlock['title']['rendered'];?></h3>
+                <p><?php echo $vTopBlock['content']['rendered'];?></p>
+              </div>
+            </a>   
+          </div>
+          <?php } } ?>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section  border-bottom">
+      <div class="container">
+        <div class="row">
+          <?php 
+            if (count($middle_block) > 0) {
+              foreach ($middle_block as $kMiddleBlock=>$vMiddleBlock) {
+          ?>
+          <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+            <div class="media custom-media">
+              <div class="mr-3 icon"><span class="flaticon-interior-design display-4"></span></div>
+              <div class="media-body">
+                <h5 class="mt-0"><?php echo $vMiddleBlock['title']['rendered'];?></h5>
+                <?php echo $vMiddleBlock['content']['rendered'];?>
+              </div>
+            </div>
+          </div>
+          <?php } } ?>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="img-border">
+              <img src="<?php echo $ask_us[0]['featured_image']['url'];?>" alt="Image" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-5 ml-auto">
+            <span class="sub-title">Why Us</span>
+            <h2 class="font-weight-bold text-black mb-5"><?php echo $ask_us[0]['title']['rendered'];?></h2>
+            <div class="accordion" id="accordionExample">
+              <?php 
+                if (count($ask_us[0]['acf']['question_and_answer']) > 0) {
+                foreach ($ask_us[0]['acf']['question_and_answer'] as $kQa=>$vQa) {
+              ?>
+              <h2 class="mb-0 border rounded mb-2">
+                <button class="btn " type="button" data-toggle="collapse" data-target="#collapse-<?php echo $kQa+1;?>" aria-expanded="true" aria-controls="collapse-<?php echo $kQa+1;?>">
+                  <?php echo $kQa + 1 . ". " . $vQa['question'];?>
+                </button>
+              </h2>
+
+              <div id="collapse-<?php echo $kQa+1;?>" class="collapse <?php echo ($kQa==0 ? 'show' : '');?>" aria-labelledby="heading-<?php echo $kQa+1;?>" data-parent="#accordionExample">
+                <div class="card-body">
+                  <?php echo $vQa['answer'];?>
+                </div>
+              </div>
+                <?php } } ?>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="container site-section block-13 testimonial-wrap">
+
+      <div class="row">
+        <div class="col-12 text-center">
+          <span class="sub-title">Happy Clients</span>
+          <h2 class="font-weight-bold text-black mb-5">Testimonials</h2>
+        </div>
+      </div>
+
+      <div class="nonloop-block-13 owl-carousel">
+        <?php 
+          if (count($testimonials) > 0) {
+            foreach ($testimonials as $kTestimonial=>$vTestimonial) {
+        ?>
+        <div class="testimony">
+          <img src="<?php echo $vTestimonial['featured_image']['url'];?>" alt="Image" class="img-fluid">
+          <h3><?php echo $vTestimonial['title']['rendered'];?></h3>
+          <span class="sub-title"><?php echo $vTestimonial['acf']['testimonial_job_title'];?></span>
+          <p><?php echo $vTestimonial['content']['rendered'];?></p>
+        </div>
+        <?php } } ?>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <span class="sub-title">News &amp; Update</span>
+            <h2 class="font-weight-bold text-black mb-5">Our Latest Posts</h2>
+          </div>
+        </div>
+        <div class="row mb-5">
+          <?php 
+            if (count($latest_post) > 0) {
+              foreach ($latest_post as $kLatestPost=>$vLatestPost) {
+          ?>
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
+            <a href="#" class="d-block figure">
+              <img src="<?php echo $vLatestPost['featured_image']['url'];?>" alt="Image" class="img-fluid">
+            </a>
+            <span class="text-muted d-block mb-2">23, January 2019</span>
+            <h3><a href="#"><?php echo $vLatestPost['title']['rendered'];?></a></h3>
+          </div>
+          <?php } } ?>
+        </div>
+        <div class="row mt-5 text-center">
+          <div class="col-12">
+            <p><a href="#" class="btn btn-primary btn-lg rounded-0">View All Posts</a></p>
+          </div>
+        </div>
+      </div>
+    </div>

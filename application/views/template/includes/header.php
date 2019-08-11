@@ -25,21 +25,19 @@
 
         <link rel="alternate" hreflang="id" href="https://newlaunch.rumah123.com/en/property/">
         <link rel="icon" href="<?php echo base_url('assets/themes/img/icon.png');?>">
-		<link href="https://fonts.googleapis.com/css?family=Fira+Sans:300i,400,400i,500,600,700,800,900" rel="stylesheet">
-		<link rel="stylesheet" href="<?php echo base_url('assets/themes/css/bootstrap.min.css');?>">
-		<link rel="stylesheet" href="<?php echo base_url('assets/themes/css/slicknav.min.css?'.date('YmdHis'));?>">
-		<link rel="stylesheet" href="<?php echo base_url('assets/themes/css/bootstrap-theme.min.css?'.date('YmdHis'));?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/font-awesome.min.css?'.date('YmdHis'));?>">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900"> 
+        <link rel="stylesheet" href="<?php echo base_url('assets/themes/fonts/icomoon/style.css?'.date('YmdHis'));?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/magnific-popup.css?'.date('YmdHis'));?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/jquery-ui.css?'.date('YmdHis'));?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/owl.carousel.min.css?'.date('YmdHis'));?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/owl.theme.default.min.css?'.date('YmdHis'));?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/animate.min.css?'.date('YmdHis'));?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/magnific-popup.css?'.date('YmdHis'));?>">
-		
-		<!-- Xman CSS -->
-        <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/normalize.css?'.date('YmdHis'));?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/themes/style.css?'.date('YmdHis'));?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/responsive.css?'.date('YmdHis'));?>">
-        <script src="<?php echo base_url('assets/themes/js/jquery.min.js');?>">  </script>
+        <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/bootstrap-datepicker.css?'.date('YmdHis'));?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/themes/fonts/flaticon/font/flaticon.css?'.date('YmdHis'));?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/aos.css?'.date('YmdHis'));?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/themes/css/style.css?'.date('YmdHis'));?>">
+
+        <script src="<?php echo base_url('assets/themes/js/jquery-3.3.1.min.js');?>">  </script>
         <script src="<?php echo base_url('assets/themes/js/bootstrap.min.js');?>"></script>
     </head>
     <body>
+        <div class="site-wrap">

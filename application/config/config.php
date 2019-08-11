@@ -524,6 +524,6 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-$config['rest_api_inoy'] = 'http://localhost/wordpress/index.php/wp-json/inoy-rest-api/v1';
+$config['rest_api_inoy'] = 'http://localhost/memenk-back/index.php/wp-json/inoy-rest-api/v1';
 
-$config['rest_api_default'] = 'http://localhost/wordpress/index.php/wp-json/wp/v2';
+$config['rest_api_default'] = 'http://localhost/memenk-back/index.php/wp-json/wp/v2';

@@ -25,19 +25,45 @@ class Welcome extends MX_Controller {
 
 	public function index()
 	{
-		$data['top_article'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages?slug=home-page'),true);
-		$data['service_article'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages?slug=bayos-profile'),true);
-		$data['people_says'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts?categories=5'),true);
-		$data['contact'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages?slug=contact-us'),true);
-		$data['csrf'] = array(
-			'name' => $this->security->get_csrf_token_name(),
-			'hash' => $this->security->get_csrf_hash()
-		);
-		$data['header_title'] = 'Head Of Business Development-Property Practitioners-Motivator Public Speaking';
-		$data['header_description'] = 'Bayo Binsar Head Of Business Development-Property Practitioners-Motivator Public Speaking Muda Indonesia';
-		$data['header_image'] = $data['top_article'][0]['featured_image']['url'];
 		$data['view'] = 'welcome/main';
-		$data['js'] = array('assets/custom_js/contact_us_inquiry.js');
+		$data['banner'] = json_decode($this->curl->simple_get($this->config->item('rest_api_inoy') . '/big-banner/?slug=homepage'),true);
+		$data['top_block'] = json_decode($this->curl->simple_get($this->config->item('rest_api_inoy') . '/post-block/?slug=homepage-top'),true);
+		$data['middle_block'] = json_decode($this->curl->simple_get($this->config->item('rest_api_inoy') . '/post-block/?slug=homepage-middle'),true);
+		$data['ask_us'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages/?slug=need-to-you-know'),true);
+		$data['testimonials'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/testimonial/?per_page=10'),true);
+		$data['latest_post'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts/?page=1&per_page=3'),true);
+		$data['js'] = array('assets/custom_js/email-subscription.js');
 		$this->load->view('template/template', $data);
+	}
+
+	public function email_subscript() {
+		if (!$this->input->is_ajax_request()) {
+            exit('No direct script access allowed');
+		}
+		$csrf = array(
+			'csrfName' => $this->security->get_csrf_token_name(),
+			'csrfHash' => $this->security->get_csrf_hash()
+		);
+
+		$data = array(
+			'email' => $this->input->post('email'),
+			'date' => date('Y-m-d H:i:s')
+		);
+
+		$post = $this->curl->simple_post($this->config->item('rest_api_inoy') . '/email-subscription', $data);
+
+		if ( $post ) {
+			$response = array(
+				'status'=>200, 
+				'message' => 'Yay, now your are subscriber'
+			);
+		} else {
+			$response = array(
+				'status'=>400, 
+				'message' => 'Oops sorry something wrong please try again later'
+			);
+		}
+		
+		echo json_encode(array_merge($response, $csrf));
 	}
 }
