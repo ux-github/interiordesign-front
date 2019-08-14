@@ -17,4 +17,23 @@ if ( ! function_exists('js')) {
         }
     }
 }
+
+if ( ! function_exists('css')) {
+    function css($css) {
+        $js_base_path = '';
+        if(is_array($css)) {
+            foreach($css as $style_src) {
+                if(strpos($style_src, 'http://') === false && strpos($style_src, 'https://') === false) {
+                    $css_base_path = base_url();
+                }
+                echo "<link rel='stylesheet' href=\"{$css_base_path}{$style_src}\">";
+            }
+        } else {
+            if(strpos($css, 'http://') === false && strpos($css, 'https://') === false) {
+                $css_base_path = base_url();
+            }
+            echo "<link rel='stylesheet' href=\"{$css_base_path}{$css}\">";
+        }
+    }
+}
 ?>

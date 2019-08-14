@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+use GuzzleHttp\Client;
 
 class Blog extends MX_Controller {
 
@@ -25,18 +26,39 @@ class Blog extends MX_Controller {
 
 	public function index()
 	{
+		$client = new Client();
 		$keyword = "";
-		$blog = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/categories/?slug=blog'), true);
-		$data['list_category'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/categories/?parent=' . $blog[0]['id']),true);
+		$page = $this->input->get('page') ? $this->input->get('page', TRUE) : 1;
+		$per_page = 6*$page;
+
 		if ($this->input->get('search', TRUE)) {
-			$data['blog'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts?categories=' . $blog[0]['id'] . '&search=' . $this->input->get('search', TRUE)),true);
+			$response = $client->request('GET', $this->config->item('rest_api_default') . '/posts',
+				[
+					'query' => [
+						'page' => 1,
+						'per_page' => $per_page,
+						'search' => $this->input->get('search', TRUE)
+					]
+				]
+			);
 			$keyword = $this->input->get('search', TRUE);
 		} else {
-			$data['blog'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts?categories=' . $blog[0]['id']),true);
+			$response = $client->request('GET', $this->config->item('rest_api_default') . '/posts',
+				[
+					'query' => [
+						'page' => 1,
+						'per_page' => $per_page
+					]
+				]
+			);
+			$keyword = $this->input->get('search', TRUE);
 		}
 		$data['keyword'] = $keyword;
-		$data['current_category'] = 0;
-		$data['header_title'] = 'Artikel';
+		$data['page'] = $page;
+		$data['total_post'] = $response->getHeaders()['X-WP-Total'];
+		$data['blog'] = json_decode($response->getBody()->getContents());
+		$data['banner'] = json_decode($this->curl->simple_get($this->config->item('rest_api_inoy') . '/big-banner/?slug=blogs'),true);
+		$data['header_title'] = 'News';
 		$data['header_description'] = 'Dapatkan article tentang gaya hidup, keuangan, motivasi, bisnis properti, publik speaking dan sales & marketing';
 		$data['view'] = 'profile/main';
 		$data['view'] = 'blog/main';
@@ -56,23 +78,29 @@ class Blog extends MX_Controller {
 	}
 
 	public function detail($id) {
+		$client = new Client();
 		//increment posts view
-		$this->curl->simple_get($this->config->item('rest_api_inoy') . '/countview/' . $id);
-		//get comment
-		$data['comment'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/comments/?post=' . $id . '&order=asc'), true);
-		$blog = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/categories/?slug=blog'), true);
-		$data['list_category'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/categories/?parent=' . $blog[0]['id']),true);
-		$data['article'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts/' . $id), true);
-		$data['contact'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages?slug=contact-us'), true);
-		$data['csrf'] = array(
-			'name' => $this->security->get_csrf_token_name(),
-			'hash' => $this->security->get_csrf_hash()
-		);
-		$data['header_title'] = strip_tags($data['article']['title']['rendered']);
-		$data['header_description'] = character_limiter(strip_tags($data['article']['content']['rendered']), 160, '');
-		$data['header_image'] = strip_tags($data['article']['featured_image']['url']);
-		$data['view'] = 'profile/main';
+		$client->request('GET', $this->config->item('rest_api_inoy') . '/countview/' . $id);
+		// get article
+		$detail_post = $client->request('GET', $this->config->item('rest_api_default') . '/posts/' . $id);
+		$data['post'] = json_decode($detail_post->getBody()->getContents());
+		$author = $client->request('GET', $this->config->item('rest_api_default') . '/users/' . $data['post']->author);
+		$data['author'] = json_decode($author->getBody()->getContents());
+		$data['blog'] = json_decode($response->getBody()->getContents());
+		$data['banner'] = json_decode($this->curl->simple_get($this->config->item('rest_api_inoy') . '/big-banner/?slug=blogs'),true);
+		$data['header_title'] = $data['post']->title->rendered;
+		$data['header_description'] = $data['post']->excerpt->rendered;
 		$data['view'] = 'blog/detail';
+		$data['css'] = array(
+			'assets/themes/fonts/font-awesome-4.7.0/css/font-awesome.min.css',
+			'assets/themes/js/jssocials-1.4.0/dist/jssocials.css',
+			'assets/themes/js/jssocials-1.4.0/dist/jssocials-theme-flat.css'
+		);
+		$data['js'] = array(
+			'assets/custom_js/contact_us_inquiry.js', 
+			'assets/themes/js/jssocials-1.4.0/dist/jssocials.min.js',
+			'assets/custom_js/social_share_link.js'
+		);
 		$this->load->view('template/template', $data);
 	}
 

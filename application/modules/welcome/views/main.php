@@ -133,13 +133,13 @@
               <img src="<?php echo $vLatestPost['featured_image']['url'];?>" alt="Image" class="img-fluid">
             </a>
             <span class="text-muted d-block mb-2">23, January 2019</span>
-            <h3><a href="#"><?php echo $vLatestPost['title']['rendered'];?></a></h3>
+            <h3><a href="<?php echo site_url('news/' . $vLatestPost['slug'] . '-' . $vLatestPost['id']);?>"><?php echo $vLatestPost['title']['rendered'];?></a></h3>
           </div>
           <?php } } ?>
         </div>
         <div class="row mt-5 text-center">
           <div class="col-12">
-            <p><a href="#" class="btn btn-primary btn-lg rounded-0">View All Posts</a></p>
+            <p><a href="<?php echo site_url('news');?>" class="btn btn-primary btn-lg rounded-0">View All Posts</a></p>
           </div>
         </div>
       </div>

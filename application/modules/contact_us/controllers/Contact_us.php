@@ -26,6 +26,7 @@ class Contact_us extends MX_Controller {
 	public function index()
 	{
 		$data['contact'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages?slug=contact-us'),true);
+		$data['banner'] = json_decode($this->curl->simple_get($this->config->item('rest_api_inoy') . '/big-banner/?slug=homepage'),true);
 		$data['csrf'] = array(
 			'name' => $this->security->get_csrf_token_name(),
 			'hash' => $this->security->get_csrf_hash()
@@ -48,10 +49,10 @@ class Contact_us extends MX_Controller {
 		);
 
 		$data = array(
-			'email' => $this->input->post('email'),
-			'name' => $this->input->post('name'),
-			'message' => $this->input->post('message'),
-			'phone' => $this->input->post('phone')
+			'email' => $this->input->post('email-inquiry'),
+			'name' => $this->input->post('name-inquiry'),
+			'message' => $this->input->post('message-inquiry'),
+			'phone' => $this->input->post('phone-inquiry')
 		);
 
 		$post = $this->curl->simple_post($this->config->item('rest_api_inoy') . '/inquiry', $data);
@@ -61,7 +62,7 @@ class Contact_us extends MX_Controller {
 				'status'=>200, 
 				'message' => 'Your inquiry is success submited'
 			);
-			$this->__sendMail($data);
+			// $this->__sendMail($data);
 		} else {
 			$response = array(
 				'status'=>400, 
@@ -73,7 +74,7 @@ class Contact_us extends MX_Controller {
 
 	private function __sendMail($data) {
         $msg = $this->load->view('contact_us/include/email_inquiry',$data,true);
-        $this->email->from('info@bayobinsar.com', 'Bayo Binsar Official Website');
+        $this->email->from('supri170845@gmail.com', 'Falco Konstruksi Official Website');
         $this->email->to($data['email']); 
         $this->email->subject('Terima Kasih Telah Kirim Pesan Ke Bayo Binsar');
         $this->email->message($msg);  
@@ -87,8 +88,8 @@ class Contact_us extends MX_Controller {
 	
 	private function __sendMailOwn($data) {
         $msg = $this->load->view('contact_us/include/email_own_inquery',$data,true);
-        $this->email->from('info@bayobinsar.com', 'Bayo Binsar Official Website');
-        $this->email->to('info@bayobinsar.com'); 
+        $this->email->from('supri170845@gmail.com', 'Falco Konstruksi Official Website');
+        $this->email->to('supri170845@gmail.com'); 
         $this->email->subject('Inquery From ' . $data['name']);
         $this->email->message($msg);  
 		if ($this->email->send()) {

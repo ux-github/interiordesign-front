@@ -34,7 +34,7 @@
                                         foreach ($this->popular_posts as $kPopularPosts=>$vPopularPosts) {
                                 ?>
                                 <li class="mb-3">
-                                    <a href="#" class="d-flex">
+                                    <a href="<?php echo site_url('news/' . $vPopularPosts['slug'] . '-' . $vPopularPosts['id']);?>" class="d-flex">
                                         <figure class="image mr-4">
                                         <img src="<?php echo $vPopularPosts['featured_image']['url'];?>" alt="" class="img-fluid">
                                         </figure>
@@ -92,7 +92,7 @@
     </footer>
 </div>
 <!--/ End Footer -->
-        <script src="js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="<?php echo base_url('assets/themes/js/jquery-migrate-3.0.1.min.js');?>"></script>
         <script src="<?php echo base_url('assets/themes/js/jquery-ui.js');?>"></script>
         <script src="<?php echo base_url('assets/themes/js/popper.min.js');?>"></script>
         <script src="<?php echo base_url('assets/themes/js/bootstrap.min.js');?>"></script>

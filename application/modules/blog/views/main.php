@@ -1,70 +1,50 @@
-<!-- Blog -->
-<section id="blog" class="blog section" style="background: #ffffff;">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8 col-xs-12">
-				<div class="section-title" style="text-align: left !important;">
-					<h2>Latest <span>News</span></h2>
-				</div>
-			</div>
-			<div class="col-md-4 col-xs-12">
-				<form method="get" action="<?php echo base_url('article/');?>">
-					<div class="input-group">
-						<input type="text" name="search" value="<?php echo (isset($keyword) ? $keyword : '');?>" class="form-control" placeholder="Search articles...">
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-						</span>
-					</div>
-				</form>
-			</div>
+<div class="site-blocks-cover overlay inner-page" style="background-image: url(<?php echo $banner['image'];?>);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-10">
+            <span class="sub-text">Our Awesome</span>
+            <h1>News</h1>
+          </div>
+        </div>
+      </div>
+    </div>  
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <span class="sub-title">News &amp; Update</span>
+            <h2 class="font-weight-bold text-black mb-5">Our Blog Posts</h2>
+          </div>
+        </div>
+        <div class="row mb-5">
+		  <?php 
+		    if (count($blog) > 0) {
+			  foreach($blog as $kBlog=>$vBlog) {
+		  ?>
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
+            <div class="border-box">
+              <a href="#" class="d-block figure">
+                <img src="<?php echo $vBlog->featured_image->url;?>" alt="Image" class="img-fluid">
+              </a>
+              <div class="border-padding">
+                <span class="text-muted d-block mb-2"><?php echo date('M d, Y', strtotime($vBlog->date));?></span>
+                <h3><a href="<?php echo site_url('news/' . $vBlog->slug . '-' . $vBlog->id);?>"><?php echo $vBlog->title->rendered;?> </a></h3>
+                <span class="mb-2"><i class="icon-eye"></i> <?php echo ((int)$vBlog->post_views == 0 ? 1 : (int)$vBlog->post_views);?> Views</span>
+              </div>
+            </div>
+		  </div>
+		  <?php } } ?>
 		</div>
-		<div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<div class="works-menu">
-					<ul>
-						<li <?php echo ($current_category == 0 ? 'class="active"' : '');?>><a href="<?php echo site_url('article');?>"><i class="fa fa-newspaper-o"></i>All</a></li>
-						<?php
-						$icon = array('usd', 'shopping-bag', 'heart', 'home', 'users', 'line-chart'); 
-						if ( count($list_category > 0) ) {
-							foreach ( $list_category as $k => $v ) {
-						?>
-						<li <?php echo ($current_category == $v['id'] ? 'class="active"' : '');?>><a href="<?php echo site_url('article/' . $v['slug']);?>"><i class="fa fa-<?php echo $icon[$k];?>"></i><?php echo $v['name'];?></a></li>
-						<?php } } ?>
-					</ul>
-				</div>
-				<!--/ End Project Nav -->
-			</div>
-		</div>
-		<div class="row">
-			<?php 
-			if ( count($blog) > 0 ) {
-				foreach ( $blog as $k => $v) {
-				$strtime = strtotime($v['date_gmt']." UCT");
-			?>
-			<div class="col-md-4 col-sm-12 col-xs-12 wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.4s">
-				<!-- single-news -->
-				<div class="single-news blogs-detail">
-					<div class="news-head">
-						<div class="news-date">
-							<span><?php echo date('d', $strtime);?></span> 
-							<span><?php echo date('M', $strtime);?></span> 
-							<span><?php echo date('Y', $strtime);?></span> 
-						</div>
-						<img class="img-wrapper" src="<?php echo $v['featured_image']['url'];?>" alt="#">
-						<div class="news-view"> 
-							<!--<span><i class="fa fa-comments"></i>25 comments</span> -->
-							<span><i class="fa fa-eye"></i><?php echo ((int)$v['post_views'] == 0 ? 1 : (int)$v['post_views']);?> views</span>
-						</div>
-					</div>
-					<div class="news-body" style="text-align: justify;">
-						<h2><a title="<?php echo $v['title']['rendered'];?>" href="<?php echo site_url('article/' . url_title($v['title']['rendered'], '-', true) . '-' . $v['id']);?>"><?php echo word_limiter($v['title']['rendered'], 5);?></a></h2>
-						<?php echo character_limiter($v['excerpt']['rendered'], 170);?>
-						<!--<a href="<?php echo site_url('article/' . url_title($v['title']['rendered'], '-', true) . '-' . $v['id']);?>" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>-->
-					</div>
-				</div>
-			</div>
-			<?php } } ?>
-		</div>
-	</div>
-</section>
-<!--/ End blog -->
+        <?php 
+        // var_dump($total_post[0]);die;
+          if ($total_post[0] > count($blog)) {
+        ?>
+        <div class="row mt-5 text-center">
+          <div class="col-12">
+            <p><a href="<?php echo base_url('news.html/?page='.($page+1).($keyword !== NULL ? '&search='.$keyword : ""));?>" class="btn btn-primary btn-lg rounded-0">More Posts</a></p>
+          </div>
+        </div>
+        <?php } ?>
+      </div>
+    </div>

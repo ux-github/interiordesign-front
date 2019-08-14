@@ -524,6 +524,12 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+$config['site_name'] = 'Falco Konstruksi Official Website';
+
+$config['head_title'] = 'Falco Konstruksi the number one of interior design in the world';
+
+$config['head_description'] = 'Falco Konstruksi menangani segala jenis permintaan renovasi atau bangun konstruksi';
+
 $config['rest_api_inoy'] = 'http://localhost/memenk-back/index.php/wp-json/inoy-rest-api/v1';
 
-$config['rest_api_default'] = 'http://localhost/memenk-back/index.php/wp-json/wp/v2';
+$config['rest_api_default'] = 'http://localhost/memenk-back/index.php/wp-json/wp/v2/';

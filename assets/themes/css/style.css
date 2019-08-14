@@ -8427,3 +8427,29 @@ h1, h2, h3, h4, h5, h6 {
 
 .block-25 ul li a:hover .text .heading {
   color: #fff; }
+
+.border-box {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0px; }
+.border-box .border-padding {
+  padding: 0 16px 8px; margin-bottom: 8px; }
+
+.images-new {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  margin-top: 32px;
+  width: 35% !important;
+}
+.blog-share {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+.blog-share .mb-2 {
+  margin-bottom: 0 !important;
+  margin-right: 5px;
+}
+.blog-share .icon-share {
+  font-size: 25px;margin: 0 0 0 5px;
+}
