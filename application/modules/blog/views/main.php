@@ -24,7 +24,7 @@
 		  ?>
           <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
             <div class="border-box">
-              <a href="#" class="d-block figure">
+              <a href="<?php echo site_url('news/' . $vBlog->slug . '-' . $vBlog->id);?>" class="d-block figure">
                 <img src="<?php echo $vBlog->featured_image->url;?>" alt="Image" class="img-fluid">
               </a>
               <div class="border-padding">

@@ -25,11 +25,14 @@ class Service extends MX_Controller {
 
 	public function index()
 	{
-		$category = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/categories/?slug=my-service'), true);
-		$data['service'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts?categories=' . $category[0]['id']),true);
-		$data['header_title'] = 'Layanan';
-		$data['header_description'] = 'Layanan pengetahuan tentang gaya hidup, keuangan, motivasi, bisnis properti, publik speaking dan sales & marketing';
+		$data['banner'] = json_decode($this->curl->simple_get($this->config->item('rest_api_inoy') . '/big-banner/?slug=services'),true);
+		$data['services'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages/?slug=services'),true);
+		$data['header_title'] = 'Services';
+		$data['header_description'] = strip_tags($data['services'][0]['excerpt']['rendered']);
 		$data['view'] = 'service/main';
+		$data['css'] = array(
+			'assets/themes/fonts/font-awesome-4.7.0/css/font-awesome.min.css'
+		);
 		$this->load->view('template/template', $data);
 	}
 }
