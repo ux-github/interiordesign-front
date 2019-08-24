@@ -86,10 +86,11 @@ class Blog extends MX_Controller {
 		$data['post'] = json_decode($detail_post->getBody()->getContents());
 		$author = $client->request('GET', $this->config->item('rest_api_default') . '/users/' . $data['post']->author);
 		$data['author'] = json_decode($author->getBody()->getContents());
-		$data['blog'] = json_decode($response->getBody()->getContents());
+		$data['blog'] = json_decode($detail_post->getBody()->getContents());
 		$data['banner'] = json_decode($this->curl->simple_get($this->config->item('rest_api_inoy') . '/big-banner/?slug=blogs'),true);
-		$data['header_title'] = $data['post']->title->rendered;
-		$data['header_description'] = $data['post']->excerpt->rendered;
+		$data['header_title'] = $data['post']->yoast_meta->yoast_wpseo_title ? $data['post']->yoast_meta->yoast_wpseo_title : $data['post']->title->rendered;
+		$data['header_description'] = $data['post']->yoast_meta->yoast_wpseo_metadesc;
+		$data['header_image'] = $data['post']->featured_image->url ? $data['post']->featured_image->url : false;
 		$data['view'] = 'blog/detail';
 		$data['css'] = array(
 			'assets/themes/fonts/font-awesome-4.7.0/css/font-awesome.min.css',

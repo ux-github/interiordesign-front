@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title><?php echo $this->profile['acf']['name'];?> - <?php echo (isset($header_title) ? $header_title : 'Home Page');?></title>
         <meta name="description" content="<?php echo (isset($header_description) ? $header_description : $this->profile['acf']['description']);?>">
+        <link rel="canonical" href="<?php echo current_url();?>" />
         <meta name="DC.title" content="<?php echo $this->profile['acf']['name'];?>" />
         <meta name="geo.region" content="ID-JK" />
         <meta name="geo.placename" content="jakarta utara" />
@@ -14,7 +15,7 @@
         <!-- Schema.org markup for Google+ -->
         <meta itemprop="name" content="<?php echo (isset($header_title) ? $header_title : 'Home Page');?> - <?php echo $this->profile['acf']['name'];?>">
         <meta itemprop="description" content="<?php echo (isset($header_description) ? $header_description :  $this->profile['acf']['description']);?>">
-        <meta itemprop="image" content="<?php echo (isset($header_image) ? $header_image : 'https://bayobinsar.com/wordpress/wp-content/uploads/2018/10/bayoimg-1-300x243.jpg');?>"> 
+        <meta itemprop="image" content="<?php echo (isset($header_image) ? $header_image : $this->profile['acf']['logos']['url']);?>"> 
         <!-- opengraph FB -->
         <meta property="og:url" content="<?php echo current_url();?>" />
         <meta property="og:type" content="article" />

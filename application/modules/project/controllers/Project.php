@@ -84,9 +84,11 @@ class Project extends MX_Controller {
 		$detail_post = $client->request('GET', $this->config->item('rest_api_default') . '/projects/' . $id);
 		$data['post'] = json_decode($detail_post->getBody()->getContents());
 		$data['banner'] = json_decode($this->curl->simple_get($this->config->item('rest_api_inoy') . '/big-banner/?slug=projects'),true);
-		$data['header_title'] = $data['post']->title->rendered;
-		$data['header_description'] = $data['post']->excerpt->rendered;
+		$data['header_title'] = $data['post']->yoast_meta->yoast_wpseo_title ? $data['post']->yoast_meta->yoast_wpseo_title : $data['post']->title->rendered;
+		$data['header_description'] = $data['post']->yoast_meta->yoast_wpseo_metadesc;
+		$data['header_image'] = $data['post']->featured_image->url ? $data['post']->featured_image->url : false;
 		$data['view'] = 'project/detail';
+		$data['js'] = array('assets/custom_js/image_modal.js');
 		$this->load->view('template/template', $data);
 	}
 
