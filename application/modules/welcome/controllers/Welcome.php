@@ -32,7 +32,6 @@ class Welcome extends MX_Controller {
 		$data['ask_us'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/pages/?slug=need-to-you-know'),true);
 		$data['testimonials'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/testimonial/?per_page=10'),true);
 		$data['latest_post'] = json_decode($this->curl->simple_get($this->config->item('rest_api_default') . '/posts/?page=1&per_page=3'),true);
-		$data['js'] = array('assets/custom_js/email-subscription.js');
 		$this->load->view('template/template', $data);
 	}
 
