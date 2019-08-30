@@ -23,7 +23,7 @@
               </div>
               <div class="text">
                 <h3><?php echo $vTopBlock['title']['rendered'];?></h3>
-                <p><?php echo $vTopBlock['content']['rendered'];?></p>
+                <p class="clamped-text"><?php echo $vTopBlock['content']['rendered'];?></p>
               </div>
             </a>   
           </div>
