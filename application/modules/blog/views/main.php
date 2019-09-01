@@ -24,12 +24,12 @@
 		  ?>
           <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
             <div class="border-box">
-              <a href="<?php echo site_url('news/' . $vBlog->slug . '-' . $vBlog->id);?>" class="d-block figure">
+              <a href="<?php echo site_url('news/' . $vBlog->slug . '-' . $vBlog->id);?>" class="d-block figure figure-index">
                 <img src="<?php echo $vBlog->featured_image->url;?>" alt="Image" class="img-fluid">
               </a>
               <div class="border-padding">
                 <span class="text-muted d-block mb-2"><?php echo date('M d, Y', strtotime($vBlog->date));?></span>
-                <h3><a href="<?php echo site_url('news/' . $vBlog->slug . '-' . $vBlog->id);?>"><?php echo $vBlog->title->rendered;?> </a></h3>
+                <h3 class="clamped-text"><a href="<?php echo site_url('news/' . $vBlog->slug . '-' . $vBlog->id);?>"><?php echo $vBlog->title->rendered;?> </a></h3>
                 <span class="mb-2"><i class="icon-eye"></i> <?php echo ((int)$vBlog->post_views == 0 ? 1 : (int)$vBlog->post_views);?> Views</span>
               </div>
             </div>
