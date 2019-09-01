@@ -44,7 +44,7 @@
               <div class="mr-3 icon"><span class="flaticon-interior-design display-4"></span></div>
               <div class="media-body">
                 <h5 class="mt-0"><?php echo $vMiddleBlock['title']['rendered'];?></h5>
-                <?php echo $vMiddleBlock['content']['rendered'];?>
+                    <div class="clamped-text"><?php echo $vMiddleBlock['content']['rendered'];?></div>
               </div>
             </div>
           </div>
@@ -109,7 +109,7 @@
           <img src="<?php echo $vTestimonial['featured_image']['url'];?>" alt="Image" class="img-fluid">
           <h3><?php echo $vTestimonial['title']['rendered'];?></h3>
           <span class="sub-title"><?php echo $vTestimonial['acf']['testimonial_job_title'];?></span>
-          <p><?php echo $vTestimonial['content']['rendered'];?></p>
+          <p class"clamped-text"><?php echo $vTestimonial['content']['rendered'];?></p>
         </div>
         <?php } } ?>
       </div>
@@ -129,7 +129,7 @@
               foreach ($latest_post as $kLatestPost=>$vLatestPost) {
           ?>
           <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 post-entry">
-            <a href="#" class="d-block figure">
+            <a href="#" class="d-block figure figure-index">
               <img src="<?php echo $vLatestPost['featured_image']['url'];?>" alt="Image" class="img-fluid">
             </a>
             <span class="text-muted d-block mb-2">23, January 2019</span>
