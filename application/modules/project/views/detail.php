@@ -73,7 +73,7 @@
 
 
     <!-- Modal box -->
-    <div class="modal fade" id="image-slide-modal" tabindex="-1" role="dialog" aria-labelledby="image-slide-modal" aria-hidden="true">
+    <div class="modal fade" id="projectimg-modal" tabindex="-1" role="dialog" aria-labelledby="image-slide-modal" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="close" data-dismiss="modal" aria-label="Close">
