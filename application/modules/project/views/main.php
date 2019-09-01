@@ -23,7 +23,7 @@
           ?>
           <div class="col-lg-4 col-md-6 mb-4 project-entry">
             <div class="border-box">
-              <a href="<?php echo site_url('project/' . $vProject->slug . '-' . $vProject->id);?>" class="d-block figure">
+              <a href="<?php echo site_url('project/' . $vProject->slug . '-' . $vProject->id);?>" class="d-block figure figure-index">
                 <img src="<?php echo $vProject->featured_image->url;?>" alt="Image" class="img-fluid">
               </a>
               <div class="border-padding">
