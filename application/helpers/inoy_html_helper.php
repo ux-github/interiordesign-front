@@ -36,4 +36,11 @@ if ( ! function_exists('css')) {
         }
     }
 }
+
+function remove_p_tags($text) {
+    $text=str_ireplace('<p>','',$text);
+    $text=str_ireplace('</p>','',$text);
+
+    return $text;
+}
 ?>
