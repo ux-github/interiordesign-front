@@ -8546,7 +8546,7 @@ a.figure-index img {
   text-overflow: ellipsis;
   display: -webkit-box;
   max-height: 55px;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
