@@ -36,7 +36,7 @@
         <div class="container py-1">
             <div class="row align-items-center">
                 <div class="col-2">
-                    <h1 class="mb-0 site-logo"><a href="index.html"><img src="https://i.ibb.co/9rqqPjm/logo-falco.jpg" alt="logo-falco" border="0" class="img-fluid"></h1>
+                    <h1 class="mb-0 site-logo"><a href="<?php echo site_url(); ?>"><img src="https://i.ibb.co/9rqqPjm/logo-falco.jpg" alt="logo-falco" border="0" class="img-fluid"></h1>
                 </div>
                 <div class="col-10">
                     <nav class="site-navigation text-right" role="navigation">
