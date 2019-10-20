@@ -8,18 +8,16 @@
                         </div>
                         <div class="col-md-6 col-lg-6">
                             <ul class="list-unstyled">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Team</a></li>
+                                <li><a href="<?php echo site_url();?>">Home</a></li>
+                                <li><a href="<?php echo site_url('about-us');?>">About Us</a></li>
+                                <li><a href="<?php echo site_url('projects');?>">Projects</a></li>
+                                <li><a href="<?php echo site_url('news');?>">News</a></li>
                             </ul>
                         </div>
                         <div class="col-md-6 col-lg-6">
                             <ul class="list-unstyled">
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Membership</a></li>
+                                <li><a href="<?php echo site_url('services');?>">Services</a></li>
+                                <li><a href="<?php echo site_url('contact-us');?>">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>

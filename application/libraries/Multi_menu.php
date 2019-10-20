@@ -114,7 +114,7 @@ class Multi_menu {
 	 * 
 	 * @var string
 	 */
-	private $item_active_class        = 'current';	
+	private $item_active_class        = 'active';	
 
 	/**
 	 * The item that has active class.
@@ -410,7 +410,7 @@ class Multi_menu {
 
 
 		        // menu slug
-		        $slug  = $item[$this->menu_key];
+		        $slug  = $item['post_name'];
 
 		        // has children or not
 		        $has_children = ! empty($item['children']);	        
