@@ -7819,7 +7819,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .site-block-appointment form, .bg-light form {
   -webkit-box-shadow: 0 5px 20px -2px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 5px 20px -2px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0 5px 20px -2px rgba(0, 0, 0, 0.1); 
+  padding: 24px; }
 
 .text-white-opacity-5 {
   color: rgba(255, 255, 255, 0.5); }
