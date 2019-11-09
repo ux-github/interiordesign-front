@@ -7,108 +7,32 @@
           </div>
         </div>
       </div>
-    </div>  
-    <!-- <div class="site-section about-section">
+    </div>
+   
+    <!-- pake yang ini -->
+    <div class="site-section about-section">
       <div class="container">
         <div class="row align-items-center mb-5 pb-5">
           <div class="col-lg-7 img-years mb-5 mb-lg-0">
-            <img src="images/about_1.png" alt="Image" class="img-fluid">
+            <img src="https://res.cloudinary.com/interior-design/image/upload/v1564962482/hero_bg_1_nonscs.jpg" class="img-fluid">
           </div>
           <div class="col-lg-4 ml-auto">
             <span class="sub-title">Architectural Design</span>
-            <h3 class="mb-4">Architectural Design Co.</h3>
-            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate fuga ipsum commodi aliquid aspernatur reiciendis enim cum voluptas id itaque, asperiores modi, voluptatibus sed voluptate nulla et ratione aliquam! Quaerat.</p>
-            <p><a href="#" class="btn btn-primary btn-lg rounded-0">Read More About Us</a></p>
+            <h3 class="mb-4">Why choose us</h3>
+            <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus aliquid eius facilis voluptatem eligendi magnam accusamus vel commodi asperiores sint rem reprehenderit nobis nesciunt veniam qui fugit doloremque numquam quod.</p>
+            <ul class="list-unstyled ul-check primary">
+              <li>Lorem ipsum dolor sit amet consecteturxx</li>
+              <li>Consectetur tempora distinctio ipsam</li>
+              <li>Recusandae repellendus asperiores amet</li>
+              <li>Lorem ipsum dolor sit amet consectetur</li>
+              <li>Consectetur tempora distinctio ipsam</li>
+            </ul>
           </div>
-        </div>
-
-        
+        </div>  
       </div>
     </div>
-    
-    <div class="site-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 text-center">
-            <span class="sub-title">Meet Our Team</span>
-            <h2 class="font-weight-bold text-black mb-5">Our Team</h2>
-          </div>
-        </div>
-        <div class="row">
 
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="person">
-              <div class="bio-img">
-                <figure>
-                  <img src="images/person_1.jpg" alt="Image" class="img-fluid">
-                </figure>
-                <div class="social">
-                  <a href="#"><span class="icon-facebook"></span></a>
-                  <a href="#"><span class="icon-twitter"></span></a>
-                  <a href="#"><span class="icon-instagram"></span></a>
-                </div>
-              </div>
-              <h2>Cloe Marena</h2>
-              <span class="sub-title">Architect</span>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="person">
-              <div class="bio-img">
-                <figure>
-                  <img src="images/person_2.jpg" alt="Image" class="img-fluid">
-                </figure>
-                <div class="social">
-                  <a href="#"><span class="icon-facebook"></span></a>
-                  <a href="#"><span class="icon-twitter"></span></a>
-                  <a href="#"><span class="icon-instagram"></span></a>
-                </div>
-              </div>
-              <h2>Nathalie Channie</h2>
-              <span class="sub-title">Designer</span>
-            </div>
-          </div>
-          
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="person">
-              <div class="bio-img">
-                <figure>
-                  <img src="images/person_3.jpg" alt="Image" class="img-fluid">
-                </figure>
-                <div class="social">
-                  <a href="#"><span class="icon-facebook"></span></a>
-                  <a href="#"><span class="icon-twitter"></span></a>
-                  <a href="#"><span class="icon-instagram"></span></a>
-                </div>
-              </div>
-              <h2>Will Turner</h2>
-              <span class="sub-title">Designer</span>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="person">
-              <div class="bio-img">
-                <figure>
-                  <img src="images/person_4.jpg" alt="Image" class="img-fluid">
-                </figure>
-                <div class="social">
-                  <a href="#"><span class="icon-facebook"></span></a>
-                  <a href="#"><span class="icon-twitter"></span></a>
-                  <a href="#"><span class="icon-instagram"></span></a>
-                </div>
-              </div>
-              <h2>Nicolas Stainer</h2>
-              <span class="sub-title">Engineer</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div> -->
-
-
+   <!-- ini salah
     <div class="site-half" style="margin-top: 20px;">
       <div class="img-bg-1" style="background-image: url('<?php echo $profile[0]['featured_image']['url'];?>');"></div>
       <div class="container">
@@ -121,3 +45,4 @@
         </div>
       </div>
     </div>
+    -->
